@@ -217,8 +217,7 @@ function checkPane() {
     document.getElementById('box4').style.display='none';
     document.getElementById('box5').style.display='none';
     document.getElementById('box6').style.display='none';
-
-    
+       
 }
 
 let logout = document.getElementById('.logout');
