@@ -1,8 +1,8 @@
 // write your code here
-let form = document.getElementById("#signup");
+let form = document.getElementById("signup");
 form.addEventListener('click', () => {
     let email = document.querySelector("#email");
-    let password = document.querySelector("password");
+    let password = document.querySelector("#password");
 
     let signupRequest = {
         email: email.value,
