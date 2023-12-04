@@ -6,31 +6,64 @@
   <link rel="stylesheet" href="dashboard.css">
   <title>Document</title>
 </head>
-<body>
+<body class="alldiv">
+
   <header class="header">
-    <h1 class="text">TrackEx</h1>
+    <h1 class="text">Track<span>Ex</span></h1>
     <div class="header-button">
       <button class="log-out">
         <img src="/assest/icons8-power-button-48.png" alt="">
         Log-Out </button>
     </div>
   </header>
-  <section class="dashboard">
-    <div class="category">
-        <button > Check Balance </button>
-        <button>Update Income</button>
-        <button>Add Expenses</button>
-        <button>Saving Goal</button>
-        <button>Check Expenses</button>
-           
-    </div>
-  </section>
 
-  <div class="update-income">
-    <h1>Update Income</h1>
-    <input class="input" type="number" placeholder="Enter Amount">
-    <input class="input" type="text" placeholder="Enter UserId">
+  <div class="workspace">
+    <div class="dashboard">
+      <div class="user-services">
+          <button > Check Balance </button>
+          <button>Update Income</button>
+          <button>Add Expenses</button>
+          <button>Saving Goal</button>
+          <button>Check Expenses</button>
+             
+      </div>
+    </div>
+  
+    <div class="update-income">
+      <h1>Update Income</h1>
+      <input class="input" type="number" placeholder="Enter Amount">
+      <button class="update-income-button" >Update Income</button>
+    </div>
+  
+    <div class="add-expenses">
+      <h1>Add Expenses</h1>
+      <select id="category" class="input">
+        <option selected>Select a Category</option>
+        <option>Home & Utilities</option>
+        <option>Insurance & Financial Section</option>
+        <option>Obligations</option>
+        <option>Groceries</option>
+        <option>Personal & Medical checkExpenses</option>
+        <option>Entertainment & Dine Out</option>
+        <option>Transportation Fares</option>
+        <option>Child Care</option>
+      </select>
+  
+      <div id="description">
+        <textarea name="description" id="description" cols="30" rows="3" placeholder="Enter a description"></textarea >
+      </div>
+      <input type="number" placeholder="Enter Amount" class="input">
+      <button class="add-expenses-button" id="add-expenses-button">Add Expenses</button>
+    </div>
+  
+    <div class="Saving">
+      <h1>Saving Goal</h1>
+      <input class="input" type="number" placeholder="Enter Amount">
+      <button type="text" class="add-expenses-button" id="saving-goal">Add Savings</button>
+    </div>
+  
   </div>
+
   <div class="add-expenses">
     <h1>Add Expenses</h1>
     <select id="category">
