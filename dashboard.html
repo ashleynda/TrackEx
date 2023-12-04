@@ -20,6 +20,7 @@
   <div class="workspace">
     <div class="dashboard">
       <div class="user-services">
+          <button>Add Income</button>
           <button > Check Balance </button>
           <button>Update Income</button>
           <button>Add Expenses</button>
@@ -28,14 +29,21 @@
              
       </div>
     </div>
+
+
+    <div class="update-income">
+      <h1>Add Income</h1>
+      <input class="input" type="number" id="addIncome" placeholder="Enter Amount">
+      <button class="add-income-button" >Add Income</button>
+    </div>
   
     <div class="update-income">
       <h1>Update Income</h1>
-      <input class="input" type="number" placeholder="Enter Amount">
+      <input class="input" type="number" id="updateIncome" placeholder="Enter Amount">
       <button class="update-income-button" >Update Income</button>
     </div>
   
-    <div class="add-expenses">
+    <div class="addExpenses" id="addExpenses">
       <h1>Add Expenses</h1>
       <select id="category" class="input">
         <option selected>Select a Category</option>
@@ -52,17 +60,18 @@
       <div id="description">
         <textarea name="description" id="description" cols="30" rows="3" placeholder="Enter a description"></textarea >
       </div>
-      <input type="number" placeholder="Enter Amount" class="input">
+      <input type="number" placeholder="Enter Amount" class="input" id="amount">
       <button class="add-expenses-button" id="add-expenses-button">Add Expenses</button>
     </div>
   
     <div class="Saving">
       <h1>Saving Goal</h1>
-      <input class="input" type="number" placeholder="Enter Amount">
+      <input class="input" type="number" id="setSavingGoal" placeholder="Enter Amount">
       <button type="text" class="add-expenses-button" id="saving-goal">Add Savings</button>
     </div>
   
   </div>
 
+  
 </body>
 </html>
