@@ -1,4 +1,4 @@
-let addExpense = document.querySelector('.addExpenses');
+let addExpense = document.querySelector('#addExpenses');
 addExpense.addEventListener('click', () => {
     category = document.getElementById("category").value;
     descriptionOfCategory = document.getElementById("description").value;
@@ -58,7 +58,7 @@ checkExpense.addEventListener('click', () => {
     })
 });
 
-let addIncome = document.querySelector('.addIncome');
+let addIncome = document.querySelector('#addIncome');
 addIncome.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
     amount = document.getElementById('#amount').value
@@ -87,7 +87,7 @@ addIncome.addEventListener('click', () => {
     })
 });
 
-let updateIncome = document.querySelector('.updateIncome');
+let updateIncome = document.querySelector('#updateIncome');
 updateIncome.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
     amount = document.getElementById('#amount').value
@@ -116,7 +116,7 @@ updateIncome.addEventListener('click', () => {
     })
 });
 
-let savingGoal = document.querySelector('.setSavingGoal');
+let savingGoal = document.querySelector('#setSavingGoal');
 savingGoal.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
     amount = document.getElementById('#amount').value
