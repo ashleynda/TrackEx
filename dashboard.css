@@ -54,6 +54,45 @@ body{
   display: flex;
   flex-direction: row;
   text-align: left;
+}
+.update-income{
+ 
+  margin-top: -300px;
+  text-align: center;
+  align-self: stretch;
+  height: 30px;
+  color: white;
+  margin-bottom: 50px;  
+}
+.input{
+  height: 30px;
+  width: 175px;
+  align-self: stretch;
+}
+.add-expenses{
+  margin-top: 30px;
+  text-align: center;
+  align-self: stretch;
+  height: 45px;
+  gap: 100px;
+  color: white;
+  margin-bottom: 150px;
+  
   
 
+}
+.Saving{
+  margin-top: 30px;
+  text-align: center;
+  align-self: stretch;
+  height: 45px;
+  gap: 100px;
+  color: white;
+  margin-top: 100px;
+
+}
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+  -webkit-appearance: none;
 }
