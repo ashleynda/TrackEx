@@ -1,8 +1,8 @@
 let addExpense = document.querySelector('.addExpenses');
 addExpense.addEventListener('click', () => {
-    category = document.getElementById("#category").value;
-    descriptionOfCategory = document.getElementById("#description").value;
-    amount = document.getElementById("#amount").value;
+    category = document.getElementById("category").value;
+    descriptionOfCategory = document.getElementById("description").value;
+    amount = document.getElementById("amount").value;
     userId = localStorage.getItem('loggedinUser');  
 
     let addExpenseRequest = {
@@ -13,7 +13,7 @@ addExpense.addEventListener('click', () => {
     };
 
     console.log(addExpenseRequest);
-    const addExpenseUrl = 'http://localhost:8080/TrackEx/addExpense';
+    const addExpenseUrl = 'http://localhost:8080/TrackEx/addExpenses';
 
     fetch(addExpenseUrl, {
         method: 'POST',
@@ -40,7 +40,7 @@ checkExpense.addEventListener('click', () => {
         accountOwner: userId,
     };
     console.log(checkExpenseRequest);
-    const checkExpenseUrl = 'http://localhost:8080/TrackEx/checkExpense';
+    const checkExpenseUrl = 'http://localhost:8080/TrackEx/check-expenses';
 
     fetch(checkExpenseUrl, {
         method: 'GET',
@@ -127,7 +127,7 @@ savingGoal.addEventListener('click', () => {
     };
 
     console.log(savingGoalRequest);
-    const savingGoalUrl = 'http://localhost:8080:TrackEx/savingGoal';
+    const savingGoalUrl = 'http://localhost:8080:TrackEx/setSavingGoal';
 
     fetch(savingGoalUrl, {
         method: 'PATCH',
@@ -154,7 +154,7 @@ checkBalance.addEventListener('click', () => {
     };
 
     console.log(checkBalanceRequest);
-    const checkBalanceUrl = 'http://localhost:8080:TrackEx/checkBalance';
+    const checkBalanceUrl = 'http://localhost:8080:TrackEx/check-balance';
 
     fetch(checkBalanceUrl, {
         method: 'GET',
@@ -175,35 +175,53 @@ checkBalance.addEventListener('click', () => {
 
 let addExpenseForm =document.querySelector('.addExpenseForm');
 addExpenseForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box1').style.display='flex';
 })
 
 let checkExpenseForm = document.querySelector('.checkExpenseForm');
 checkExpenseForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box2').style.display='flex';
 })
 
 let addIncomeForm = document.querySelector('addIncomeForm');
 addIncomeForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box3').style.display='flex';
 })
 
 let updateIncomeForm = document.querySelector('.updateIncomeForm');
 updateIncomeForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box4').style.display='flex';
 })
 
 let savingGoalForm = document.querySelector('.savingGoalForm');
 savingGoalForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box5').style.display='flex';
 })
 
 let checkBalanceForm = document.querySelector('.checkBalanceForm');
 checkBalanceForm.addEventListener('click', () => {
+    checkPane();
     document.getElementById('box6').style.display='flex';
 })
 
-let logout = document.getElementById('#logout');
+
+function checkPane() {
+    document.getElementById('box1').style.display='none';
+    document.getElementById('box2').style.display='none';
+    document.getElementById('box3').style.display='none';
+    document.getElementById('box4').style.display='none';
+    document.getElementById('box5').style.display='none';
+    document.getElementById('box6').style.display='none';
+
+    
+}
+
+let logout = document.getElementById('.logout');
 
 logout.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
@@ -224,7 +242,7 @@ logout.addEventListener('click', () => {
     })
     .then(response => response.text())
     .then(responseText => {
-        window.display(signupRequest).innerText = responseText;
+        window.location = "./index.html"
     })
     .catch(error => {
         console.error('Error:', error)
