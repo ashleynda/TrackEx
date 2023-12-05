@@ -47,20 +47,20 @@ public class UserController {
 
 
     @GetMapping("/check-expenses/{id}")
-    public Object checkExpenses(@PathVariable String id){
+    public ApiResponse<Object> checkExpenses(@PathVariable String id){
         try{
-            return userService.getExpenses(id);
+            return new ApiResponse<>(userService.getExpenses(id));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
     @PostMapping("/addIncome")
-    public Object addIncome(@RequestBody AddIncomeRequest addIncomeRequest){
+    public ApiResponse<Object> addIncome(@RequestBody AddIncomeRequest addIncomeRequest){
         try{
-            return userService.addIncome(addIncomeRequest);
+            return new ApiResponse<>(userService.addIncome(addIncomeRequest));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
@@ -83,11 +83,11 @@ public class UserController {
     }
 
     @PostMapping("/addExpenses")
-    public Object addExpenses(@RequestBody AddExpensesRequest request){
+    public ApiResponse<Object> addExpenses(@RequestBody AddExpensesRequest request){
         try{
-            return userService.addExpenses(request);
+            return new ApiResponse<>(userService.addExpenses(request));
         }catch (Exception e){
-            return e.getMessage();
+            return  new ApiResponse<>(e.getMessage());
         }
     }
 

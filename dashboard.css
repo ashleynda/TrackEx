@@ -148,7 +148,7 @@ body{
   flex-direction: column;
   justify-content: center;
   text-align: center;
-  color: white;
+  color: rgb(51, 51, 51);
   margin-bottom: 50px;
   width: 50%;  
   align-content: center;
