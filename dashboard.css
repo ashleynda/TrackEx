@@ -169,3 +169,7 @@ input::-webkit-outer-spin-button{
 .cancel, .check{
   display: none;
 }
+.balance-amount{
+  color: green;
+}
+

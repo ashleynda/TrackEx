@@ -1,4 +1,3 @@
-// write your code here
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
     event.preventDefault();
