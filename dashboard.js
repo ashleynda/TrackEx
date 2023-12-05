@@ -15,7 +15,7 @@ addExpense.addEventListener('click', () => {
     };
 
     console.log(addExpenseRequest);
-    const addExpenseUrl = 'http://localhost:8080/TrackEx/addExpenses';
+    const addExpenseUrl = 'https://97b9-62-173-45-70.ngrok-free.app/TrackEx/addExpenses';
 
     fetch(addExpenseUrl, {
         method: 'POST',
@@ -46,7 +46,7 @@ addIncome.addEventListener('click', () => {
     };
 
     console.log(addIncomeRequest);
-    const addIncomeUrl = 'http://localhost:8080/TrackEx/addIncome';
+    const addIncomeUrl = 'https://97b9-62-173-45-70.ngrok-free.app/TrackEx/addIncome';
 
     fetch(addIncomeUrl, {
         method: 'POST',
@@ -85,7 +85,7 @@ updateIncome.addEventListener('click', () => {
     };
 
     console.log(updateIncomeRequest);
-    const updateIncomeUrl = 'http://localhost:8080/TrackEx/updateIncome';
+    const updateIncomeUrl = 'https://97b9-62-173-45-70.ngrok-free.app/TrackEx/updateIncome';
 
     fetch(updateIncomeUrl, {
         method: 'PATCH',
@@ -122,7 +122,7 @@ savingGoal.addEventListener('click', () => {
     };
 
     console.log(savingGoalRequest);
-    const savingGoalUrl = 'http://localhost:8080/TrackEx/setSavingGoal';
+    const savingGoalUrl = 'https://97b9-62-173-45-70.ngrok-free.app/TrackEx/setSavingGoal';
 
     fetch(savingGoalUrl, {
         method: 'PATCH',
@@ -153,7 +153,7 @@ checkBalance.addEventListener('click', () => {
     document.getElementById('check-balance').style.display='flex';
     let userId = localStorage.getItem('loggedinUser');
     
-    const checkBalanceUrl = `http://localhost:8080/TrackEx/check-balance/${userId}`;
+    const checkBalanceUrl = `https://97b9-62-173-45-70.ngrok-free.app/TrackEx/check-balance/${userId}`;
 
     fetch(checkBalanceUrl, {
         method: 'GET',
@@ -185,7 +185,7 @@ checkExpenseForm.addEventListener('click', () => {
     userId = localStorage.getItem("loggedinUser");
     console.log(userId)
 
-    fetch(`http://localhost:8080/TrackEx/check-expenses/${userId}`, {
+    fetch(`https://97b9-62-173-45-70.ngrok-free.app/TrackEx/check-expenses/${userId}`, {
         method: 'GET',
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
@@ -282,7 +282,7 @@ logout.addEventListener('click', () => {
     };
 
     console.log(logoutRequest);
-    const logoutUrl = 'http://localhost:8080/TrackEx/logout';
+    const logoutUrl = 'https://97b9-62-173-45-70.ngrok-free.app/TrackEx/logout';
 
     fetch(logoutUrl, {
         method: 'PATCH',
