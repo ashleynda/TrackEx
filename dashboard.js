@@ -34,31 +34,6 @@ addExpense.addEventListener('click', () => {
 });
 
 
-// let checkExpense = document.querySelector('#check-expenses-button');
-// checkExpense.addEventListener('click', () => {
-//     userId = localStorage.getItem('loggedinUser');    
-
-//     let checkExpenseRequest = {
-//         accountOwner: userId,
-//     };
-//     console.log(checkExpenseRequest);
-//     const checkExpenseUrl = 'http://localhost:8080/TrackEx/check-expenses';
-
-//     fetch(checkExpenseUrl, {
-//         method: 'GET',
-//         body: JSON.stringify(checkExpenseRequest),
-//         headers: {
-//             'Content-Type': 'application/json, charset=UTF-8'
-//         },
-//     })
-//     .then(response => response.text())
-//     .then(responseText => {
-//         document.getElementById(checkExpense-response).innerText = responseText;
-//     })
-//     .catch(error => {
-//         console.error('Error:', error)
-//     })
-// });
 
 let addIncome = document.querySelector('#add-income-button-new');
 addIncome.addEventListener('click', () => {
@@ -175,10 +150,9 @@ savingGoal.addEventListener('click', () => {
 let checkBalance = document.querySelector('#check-balance-button');
 checkBalance.addEventListener('click', () => {
     clearPane();
-    let userId = localStorage.getItem('loggedinUser');
     document.getElementById('check-balance').style.display='flex';
-
-    // console.log(checkBalanceRequest);
+    let userId = localStorage.getItem('loggedinUser');
+    
     const checkBalanceUrl = `http://localhost:8080/TrackEx/check-balance/${userId}`;
 
     fetch(checkBalanceUrl, {
@@ -187,19 +161,9 @@ checkBalance.addEventListener('click', () => {
             'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(responseObject => {
-        // document.getElementById("check-balance-text").innerText = responseObject.data;
-        // if(typeof responseObject.data !== 'string'){
-        //     document.getElementById("check-balance-text").innerText = responseObject.data.balance;
-            
-        // } else{
-        //     let response = document.getElementById("check-balance-text");
-        //     response.innerHTML = responseObject.data;
-        //     response.style.color = 'red';
-        // }
-
-        
+        document.getElementById("check-balance-text").innerText = responseObject.data;          
     })
     .catch(error => {
         console.error('Error:', error)
@@ -295,11 +259,6 @@ savingGoalForm.addEventListener('click', () => {
     document.getElementById('saving').style.display='flex';
 });
 
-// let checkBalanceForm = document.querySelector('#check-balance-button');
-// checkBalanceForm.addEventListener('click', () => {
-//     clearPane();
-//     document.getElementById('check-balance').style.display='flex';
-// })
 
 
 function clearPane() {
