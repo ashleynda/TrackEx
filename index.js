@@ -45,7 +45,6 @@ form.addEventListener('submit', () => {
         body: JSON.stringify(signupRequest),
         headers: {
             'Content-Type': 'application/json',
-            'Access-Control-Allow-Origin': '*'
         },
     })
     .then(response => response.json()) 
