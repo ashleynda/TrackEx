@@ -1,3 +1,5 @@
+let link = 'https://f8ca-62-173-45-70.ngrok-free.app';
+
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
     event.preventDefault();
@@ -15,7 +17,7 @@ form.addEventListener('submit', () => {
 
     console.log(signupRequest);
 
-    const url = 'http://localhost:8080/TrackEx/register';
+    const url = `${link}/TrackEx/register`;
 
     fetch(url, {
         method: 'POST',
@@ -68,7 +70,7 @@ form1.addEventListener('submit', () => {
     };
 
     console.log(signinRequest);
-    const loginUrl = 'http://localhost:8080/TrackEx/login';
+    const loginUrl = `${link}/TrackEx/login`;
 
     fetch(loginUrl, {
         method: 'PATCH',
