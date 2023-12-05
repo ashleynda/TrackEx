@@ -1,8 +1,13 @@
 // write your code here
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
+    event.preventDefault();
+
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
+    let username = document.getElementById("user-username");
+
+    localStorage.setItem("currentUser", username.value);
 
     let signupRequest = {
         email: email.value,
@@ -17,27 +22,50 @@ form.addEventListener('submit', () => {
         method: 'POST',
         body: JSON.stringify(signupRequest),
         headers: {
-            'Content-Type': 'application/json; chaarset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById("signup-response").innerText = responseText;
+    .then(response => response.json()) 
+    .then(responseObject => {
+        if(typeof responseObject.data !== 'string'){
+            document.getElementById("signup-response").innerHTML = "Sign up Successful"
+        } else{
+            let response = document.getElementById("signup-response");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
+        
     })
     .catch(error => {
         console.error('Error:', error);
     })
 });
 
+let loginButton = document.querySelector('#login-button');
+loginButton.addEventListener('click', () => {
+
+    event.preventDefault();
+    document.getElementById('signup-segment').style.display = 'none';
+    document.getElementById('login-segment').style.display = 'flex';
+});
+
+let cancelButton = document.querySelector('#cancel-login');
+cancelButton.addEventListener("click", () => {
+    document.getElementById('signup-segment').style.display = 'flex';
+    document.getElementById('login-segment').style.display = 'none';
+});
+
 
 let form1 = document.getElementById("signin");
 form1.addEventListener('submit', () => {
+
+    event.preventDefault();
     let signinEmail = document.querySelector("#signin-email");
     let signinPassword = document.querySelector("#signin-password");
 
     let signinRequest = {
-        signinEmail: signin-email.value,
-        signinPassword: signin-password.value
+        email: signinEmail.value,
+        password: signinPassword.value
     };
 
     console.log(signinRequest);
@@ -50,10 +78,19 @@ form1.addEventListener('submit', () => {
             'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById("signin-response").innerText = responseText;
-        localStorage.setItem('loggedinUser', signinEmail.value);
+    .then(response => response.json())
+    .then(responseObject => {
+
+        if(typeof responseObject.data !== 'string'){
+            document.getElementById("login-response").innerHTML = "Sign in Successful";
+            localStorage.setItem('loggedinUser', signinEmail.value);
+            window.location = './dashboard.html';
+        } else{
+            let response = document.getElementById("login-response");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
+        
     })
     .catch(error => {
         console.error('Error:', error)
