@@ -54,38 +54,48 @@ checkExpense.addEventListener('click', () => {
         document.getElementById(checkExpense-response).innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })
 });
 
 let addIncome = document.querySelector('#add-income-button-new');
 addIncome.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
-    amount = document.getElementById('#addIncomeAmount').value
+    amount = document.getElementById('addIncomeAmount').value
 
     let addIncomeRequest = {
-        accountOwner: userId,
+        accountId: userId,
         amount: amount
     };
 
     console.log(addIncomeRequest);
-    const addIncomeUrl = 'http://localhost:8080:TrackEx/addIncome';
+    const addIncomeUrl = 'http://localhost:8080/TrackEx/addIncome';
 
     fetch(addIncomeUrl, {
         method: 'POST',
         body: JSON.stringify(addIncomeRequest),
         headers: {
-            'Content-Type': 'application/json, charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById(addIncome-response).innerText = responseText;
+    .then(response => response.json())
+    .then(responseObject => {
+        
+        if(typeof responseObject.data !== 'string'){
+            document.getElementById("add-income-text").innerText = responseObject.data.message;
+        } else{
+            let response = document.getElementById("add-income-text");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
+        
+
     })
     .catch(error => {
         console.error('Error:', error)
     })
 });
+
 
 let updateIncome = document.querySelector('#update-income-button-new');
 updateIncome.addEventListener('click', () => {
@@ -124,29 +134,36 @@ updateIncome.addEventListener('click', () => {
     })
 });
 
-let savingGoal = document.querySelector('#setSavingGoal');
+let savingGoal = document.querySelector('#saving-goal');
 savingGoal.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
-    amount = document.getElementById('#amount').value
+    amount = document.getElementById('setSavingGoal').value
 
     let savingGoalRequest = {
-        accountOwner: userId,
-        amount: amount.value
+        accountOwnerId: userId,
+        amount: amount
     };
 
     console.log(savingGoalRequest);
-    const savingGoalUrl = 'http://localhost:8080:TrackEx/setSavingGoal';
+    const savingGoalUrl = 'http://localhost:8080/TrackEx/setSavingGoal';
 
     fetch(savingGoalUrl, {
         method: 'PATCH',
         body: JSON.stringify(savingGoalRequest),
         headers: {
-            'Content-Type': 'application/json, charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById(savingGoal-response).innerText = responseText;
+    .then(response => response.json())
+    .then(responseObject => {
+        if(typeof responseObject.data !== 'string'){
+        document.getElementById("saving-goal-text").innerText = responseObject.data.message;
+
+        } else{
+            let response = document.getElementById("saving-goal-text");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
     })
     .catch(error => {
         console.error('Error:', error)

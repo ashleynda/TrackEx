@@ -33,17 +33,23 @@
     </div>
 
     <div class="update-income" id="check-balance">
+      <h1 id="balance"></h1>
+      <div><img class="incorrect" src="/assest/icons8-cancel-49.png" alt=""></div>
 
+      <div><img class="correct" src="/assest/icons8-check-48.png" alt=""></div>
     </div>
 
+
     <div class="update-income" id="check-expenses">
+
 
     </div>
 
 
     <div class="update-income" id="add-income">
       <h1>Add Income</h1>
-      <input class="input" type="number" id="addIncomeAmount" placeholder="Enter Amount">
+      <div id="add-income-text"></div>
+      <input class="input" type="number" id="addIncomeAmount" placeholder="Enter Amount" required>
       <button class="add-expenses-button" id="add-income-button-new">Add Income</button>
     
     </div>
@@ -80,6 +86,7 @@
   
     <div class="saving" id="saving">
       <h1>Saving Goal</h1>
+      <div id="saving-goal-text"></div>
       <input class="input" type="number" id="setSavingGoal" placeholder="Enter Amount">
       <button type="text" class="add-expenses-button" id="saving-goal">Add Savings</button>
     </div>
