@@ -1,33 +1,38 @@
 package TrackEx.trackEx.controller;
 
 import TrackEx.trackEx.dtos.request.*;
+import TrackEx.trackEx.dtos.response.ApiResponse;
 import TrackEx.trackEx.dtos.response.UpdateUserIncomeResponse;
 import TrackEx.trackEx.service.UserService;
+import lombok.AllArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 @RestController
 @RequestMapping("/TrackEx")
+@AllArgsConstructor
 public class UserController {
 
-    @Autowired
     private UserService userService;
 
     @PostMapping("/register")
-    public Object registerUser(@RequestBody RegisterUserRequest registerUserRequest ){
+    public ApiResponse<Object> registerUser(@RequestBody RegisterUserRequest registerUserRequest ){
         try{
-            return userService.register(registerUserRequest);
+            return new ApiResponse<>(userService.register(registerUserRequest));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
     @PatchMapping("/login")
-    public Object login(@RequestBody LoginUserRequest loginUserRequest){
+    public ApiResponse<Object> login(@RequestBody LoginUserRequest loginUserRequest){
         try{
-            return userService.login(loginUserRequest);
+            return new ApiResponse<>(userService.login(loginUserRequest));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
@@ -60,20 +65,20 @@ public class UserController {
     }
 
     @PatchMapping("/setSavingGoal")
-    public Object setSavingGoal(@RequestBody SetSavingGoalRequest setSavingGoalRequest){
+    public ApiResponse<Object> setSavingGoal(@RequestBody SetSavingGoalRequest setSavingGoalRequest){
         try{
-            return userService.setSavingGoal(setSavingGoalRequest);
+            return new ApiResponse<>(userService.setSavingGoal(setSavingGoalRequest));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
     @PatchMapping("/updateIncome")
-    public Object checkBalance(@RequestBody UpdateUserIncomeRequest request){
+    public ApiResponse<Object> checkBalance(@RequestBody UpdateUserIncomeRequest request){
         try{
-            return userService.updateIncome(request);
+            return new ApiResponse<>(userService.updateIncome(request));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 

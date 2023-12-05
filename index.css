@@ -1,57 +1,130 @@
 @import url('https://fonts.cdnfonts.com/css/hellow-knight');
+@import url('https://fonts.cdnfonts.com/css/magma-cracks-personal-use');
 
                 
 body{
-  background-color: rgb(39, 8, 8);
+  display: flex;
+  background-color: rgb(152, 190, 165);
   color: aliceblue;
   display: flex;
   justify-content: center;
   align-items: center;
+  padding: 100px 100px;
+
 }
+
+.page{
+  display: flex;
+  width: 90%;
+  justify-content: center;
+}
+
 .main{
   display: flex;
   flex-direction: column;
+  border-radius: 12px ;
+  justify-content: center;
+  align-items: center;
 
 }
+
 .account, .forget{
+  display: flex;
   margin-top: 30px;
-  font-size: smaller;
+  font-size: 18px;
   color: whitesmoke;
+  width: 60%;
+  gap: 20px;
+  align-items: center;
+  text-decoration: none;
 }
+
 .Login{
   display: none;
+  flex-direction: column;
+  border-radius: 12px ;
+  justify-content: center;
+  align-items: center;
+  width: 80%;
+  justify-content: center;
+  background-color: rgb(92, 121, 102);
 }
+
 .text{
-  margin-top: 100px;
   font-family:sans-serif;
 }
+
 .details{
   display: flex;
   flex-direction: column;
   align-self: stretch;
-  margin-top: 30px;
+  gap: 35px;
+  justify-content: center;
+  align-content: center;
+  align-items: center;
 }
 .details > input{
   border-radius: 6px;
-  width: 100%;
+  width: 90%;
   box-sizing: border-box;
   align-items: center;
   font-size: 15px;
-  margin-bottom: 10px;
   height: 45px;
+  font-size: 20px;
+  height: 50px;
+  justify-content: center;
   
 }
 
-.button{
-  background-color: rgb(233, 217, 197);
+.button, .login-button{
+  background-color: rgb(171, 216, 187);
   border: none;
   padding: 0px 30px;
-  border-radius: 5px;
+  border-radius: 8px;
   cursor: pointer;
-  height: 30px;
+  height: 40px;
   font-size: 19px;
+  width: 90%;
+  font-size: 22px;
+}
+
+.login-button{
+  width: 40%;
+  font-size: 15px;
+  padding: 0px 0px;
+}
+
+.button:hover, .login-button:hover{
+  background-color: rgb(147, 187, 161);
+  font-size: 23px;
+}
+
+.main-login{
+  display: flex;
+  flex-direction: column;
+  border-radius: 12px ;
+  justify-content: center;
+  align-items: center;
   width: 100%;
 }
-.button:hover{
-  background-color: blanchedalmond
+
+
+
+input::-webkit-inner-spin-button,
+input::-webkit-outer-spin-button{
+  -webkit-appearance: none;
+}
+
+.cancel{
+  display: flex;
+  align-self: flex-end;
+  justify-self: right;
+  align-content: end;
+}
+
+#cancel-login{
+  background: none;
+  border: none;
+  font-size: 20px;
+  margin-right: 10px;
 }

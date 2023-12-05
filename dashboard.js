@@ -1,4 +1,4 @@
-let addExpense = document.querySelector('#addExpenses');
+let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
     category = document.getElementById("category").value;
     descriptionOfCategory = document.getElementById("description").value;
@@ -7,9 +7,9 @@ addExpense.addEventListener('click', () => {
 
     let addExpenseRequest = {
         accountOwner: userId,
-        category: category.value,
-        descriptionOfCategory: description.value,
-        amount: amount.value
+        category: category,
+        descriptionOfCategory: description,
+        amount: amount
     };
 
     console.log(addExpenseRequest);
@@ -27,12 +27,12 @@ addExpense.addEventListener('click', () => {
         document.getElementById("addexpense-response").innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })
 });
 
 
-let checkExpense = document.querySelector('.checkExpenses');
+let checkExpense = document.querySelector('#check-expenses-button');
 checkExpense.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');    
 
@@ -58,14 +58,14 @@ checkExpense.addEventListener('click', () => {
     })
 });
 
-let addIncome = document.querySelector('#addIncome');
+let addIncome = document.querySelector('#add-income-button-new');
 addIncome.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
-    amount = document.getElementById('#amount').value
+    amount = document.getElementById('#addIncomeAmount').value
 
     let addIncomeRequest = {
         accountOwner: userId,
-        amount: amount.value
+        amount: amount
     };
 
     console.log(addIncomeRequest);
@@ -83,14 +83,14 @@ addIncome.addEventListener('click', () => {
         document.getElementById(addIncome-response).innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })
 });
 
-let updateIncome = document.querySelector('#updateIncome');
+let updateIncome = document.querySelector('#update-income-button-new');
 updateIncome.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
-    amount = document.getElementById('#amount').value
+    amount = document.getElementById('updateIncomeAmount');
 
     let updateIncomeRequest = {
         accountOwner: userId,
@@ -107,12 +107,12 @@ updateIncome.addEventListener('click', () => {
             'Content-Type': 'application/json, charset=UTF-8'
         },
     })
-    .then(response => response.text())
+    .then(response => response.json())
     .then(responseText => {
         document.getElementById(addIncome-response).innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })
 });
 
@@ -141,16 +141,16 @@ savingGoal.addEventListener('click', () => {
         document.getElementById(savingGoal-response).innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })  
 });
 
-let checkBalance = document.querySelector('.checkBalance');
+let checkBalance = document.querySelector('#check-balance-button');
 checkBalance.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
 
     let checkBalanceRequest = {
-        accountOwner: userId,
+        accountOwner: userId
     };
 
     console.log(checkBalanceRequest);
@@ -165,62 +165,63 @@ checkBalance.addEventListener('click', () => {
     })
     .then(response => response.text())
     .then(responseText => {
-        document.getElementById(checkBalance-response).innerText = responseText;
+        document.getElementById("checkBalance-response").innerText = responseText;
     })
     .catch(error => {
-        console.error('Error:error')
+        console.error('Error:', error)
     })  
 });
 
 
-let addExpenseForm =document.querySelector('.addExpenseForm');
+let addExpenseForm =document.querySelector('#add-expenses-button');
 addExpenseForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box1').style.display='flex';
+    clearPane();
+    document.getElementById('addExpenses').style.display='flex';
 })
 
-let checkExpenseForm = document.querySelector('.checkExpenseForm');
-checkExpenseForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box2').style.display='flex';
-})
+// let checkExpenseForm = document.querySelector('#check-expenses-button');
+// checkExpenseForm.addEventListener('click', () => {
+//     clearPane();
+//     document.getElementById('box2').style.display='flex';
+// })
 
-let addIncomeForm = document.querySelector('addIncomeForm');
+let addIncomeForm = document.querySelector('#add-income-button');
 addIncomeForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box3').style.display='flex';
+    clearPane();
+    document.getElementById('add-income').style.display='flex';
 })
 
-let updateIncomeForm = document.querySelector('.updateIncomeForm');
+let updateIncomeForm = document.querySelector('#update-income-button');
 updateIncomeForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box4').style.display='flex';
+    clearPane();
+    document.getElementById('update-income-part').style.display='flex';
 })
 
-let savingGoalForm = document.querySelector('.savingGoalForm');
+let savingGoalForm = document.querySelector('#saving-goal-button');
 savingGoalForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box5').style.display='flex';
+    clearPane();
+    document.getElementById('saving').style.display='flex';
 })
 
-let checkBalanceForm = document.querySelector('.checkBalanceForm');
-checkBalanceForm.addEventListener('click', () => {
-    checkPane();
-    document.getElementById('box6').style.display='flex';
-})
+// let checkBalanceForm = document.querySelector('#check-balance-button');
+// checkBalanceForm.addEventListener('click', () => {
+//     clearPane();
+//     document.getElementById('box6').style.display='flex';
+// })
 
 
-function checkPane() {
-    document.getElementById('box1').style.display='none';
-    document.getElementById('box2').style.display='none';
-    document.getElementById('box3').style.display='none';
-    document.getElementById('box4').style.display='none';
-    document.getElementById('box5').style.display='none';
-    document.getElementById('box6').style.display='none';
+function clearPane() {
+    document.getElementById('check-balance').style.display='none';
+    document.getElementById('check-expenses').style.display='none';
+    document.getElementById('update-income-part').style.display='none';
+    document.getElementById('addExpenses').style.display='none';
+    document.getElementById('add-income').style.display='none';
+    document.getElementById('saving').style.display='none';
        
 }
 
-let logout = document.getElementById('.logout');
+
+let logout = document.getElementById('logout');
 
 logout.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');
