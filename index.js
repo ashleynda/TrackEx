@@ -23,7 +23,7 @@ form.addEventListener('submit', () => {
         method: 'POST',
         body: JSON.stringify(signupRequest),
         headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-Type': 'application/json'
         },
     })
     .then(response => response.json()) 
@@ -76,7 +76,7 @@ form1.addEventListener('submit', () => {
         method: 'PATCH',
         body: JSON.stringify(signinRequest),
         headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-Type': 'application/json'
         },
     })
     .then(response => response.json())
