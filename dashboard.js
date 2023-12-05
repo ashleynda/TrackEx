@@ -3,14 +3,14 @@ let currentExpense = "";
 let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
     category = document.getElementById("category").value;
-    descriptionOfCategory = document.getElementById("description").value;
+    descriptionOfCategory = document.getElementById("description-text").value;
     amount = document.getElementById("amount").value;
     userId = localStorage.getItem('loggedinUser');  
 
     let addExpenseRequest = {
         accountOwnerId: userId,
         category: category,
-        descriptionOfCategory: description,
+        description: descriptionOfCategory,
         amount: amount
     };
 
@@ -195,6 +195,8 @@ checkExpenseForm.addEventListener('click', () => {
     .then(responseObject => {
         if(typeof responseObject.data !== 'string'){
         let allExpenses =  responseObject.data;
+        console.log(responseObject.data);
+        console.log(allExpenses);
 
         waitForNextButton(allExpenses);
 
@@ -213,8 +215,7 @@ let count = 0;
 function waitForNextButton(allExpenses){
 
     currentExpense = allExpenses;
-    console.log(currentExpense)
-    console.log(allExpenses)
+
     display(currentExpense[count]);
 
 }
@@ -223,16 +224,20 @@ function display(expenses){
     console.log(expenses)
     let {category ,description, amount, dateCreated} = expenses;
     document.getElementById("expense-category").innerText = category;
-    document.getElementById("expense-description").innerHTML = description;
-    document.getElementById("expense-price").innerText = amount;
-    document.getElementById("date-created").innerText = dateCreated;
+    document.getElementById("expense-description").innerHTML = "Description: " + description;
+    document.getElementById("expense-price").innerText = "Amount: " + amount;
+    document.getElementById("date-created").innerText = "Date: " + dateCreated[2] + "/" + dateCreated[1] + "/" + dateCreated[0] ;
 }
 
 
 let nextButton = document.getElementById("next-button");
 nextButton.addEventListener("click", () => {
-    count++;
-    display(currentExpense[count]);
+
+    if(count < currentExpense.length){
+        count++;
+        display(currentExpense[count]);
+    }
+    
 });
 
 
