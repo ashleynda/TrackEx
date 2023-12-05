@@ -8,7 +8,7 @@ addExpense.addEventListener('click', () => {
     userId = localStorage.getItem('loggedinUser');  
 
     let addExpenseRequest = {
-        accountOwner: userId,
+        accountOwnerId: userId,
         category: category,
         descriptionOfCategory: description,
         amount: amount
@@ -24,9 +24,9 @@ addExpense.addEventListener('click', () => {
             'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById("addexpense-response").innerText = responseText;
+    .then(response => response.json())
+    .then(responseObject => {
+        document.getElementById("add-expense-text").innerText = responseObject.data.message;
     })
     .catch(error => {
         console.error('Error:', error)
@@ -105,7 +105,7 @@ updateIncome.addEventListener('click', () => {
     amount = document.getElementById('updateIncomeAmount');
 
     let updateIncomeRequest = {
-        accountOwner: userId,
+        accountOwnerId: userId,
         amount: amount.value
     };
 
@@ -116,12 +116,20 @@ updateIncome.addEventListener('click', () => {
         method: 'PATCH',
         body: JSON.stringify(updateIncomeRequest),
         headers: {
-            'Content-Type': 'application/json, charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
         },
     })
     .then(response => response.json())
-    .then(responseText => {
-        document.getElementById(addIncome-response).innerText = responseText;
+    .then(responseObject => {
+
+        if(typeof responseObject.data !== 'string'){
+            document.getElementById("update-income-text").innerHTML = responseObject.data.message;
+            
+        } else{
+            let response = document.getElementById("update-income-text");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
     })
     .catch(error => {
         console.error('Error:', error)
