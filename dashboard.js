@@ -1,5 +1,5 @@
 let currentExpense = "";
-let link = 'https://bc3a-62-173-45-70.ngrok-free.app';
+let link = 'https://905f-62-173-45-70.ngrok-free.app';
 
 let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
@@ -22,7 +22,7 @@ addExpense.addEventListener('click', () => {
         method: 'POST',
         body: JSON.stringify(addExpenseRequest),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json; charset:UTF-8'
         },
     })
     .then(response => response.json())
