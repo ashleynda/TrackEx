@@ -7,44 +7,48 @@
     <title>TrackEx</title>
 </head>
 <body>
-    <div>
-        <div class="exception"></div>
-        <div class="main">
-    
-          <h1 class="text"> Welcome to your favorite Expense Tracker <br>
-          <!-- <span>Register Here to get Started</span></h1> -->
-    
-          <form class="details" id="signup">
-              <input type="text" placeholder="Enter FirstName and LastName" id="firstname" required>
-              <input type="text" placeholder="Enter UserName" id="lastname" required>
-              <input type="email" placeholder="Enter your preferred email " id="email" required>
-              <input type="password" placeholder="Enter your password " id="password" required>
-              <input type="number" placeholder="Enter your phone-number" id="phone-number">
-    
-              <button class="button" id="form" type="submit">Sign-Up</button>
-              <a href="" class="account"> Already have an account? Log-in Here</a>
-    
-          </form>
+    <div class="page">
+      <div class="exception"></div>
+      <div class="main" id="signup-segment">
+  
+        <h1 class="text"> Welcome to your favorite Expense Tracker <br>
+        <h3 id="signup-response"></h3>
+        <form class="details" id="signup" method="post">
+            <input type="text" placeholder="Enter FirstName and LastName" id="firstname" required>
+            <input type="text" placeholder="Enter Username" id="user-username" required>
+            <input type="email" placeholder="Enter your preferred email " id="email" required>
+            <input type="password" placeholder="Enter your password " id="password" required>
+            <input type="number" placeholder="Enter your phone-number" id="phone-number">
+  
+            <button class="button" id="form" type="submit">Sign-Up</button>
+            
+            
+  
+        </form>
+        <div class="account"> Already have an account? 
+          <button class="login-button" id="login-button">Login Here</button>
+        </div>
       </div>
-    
-    
-    
-      <div class="Login">
-        <div class="login-exception"></div>
-        <div class="main">
+  
+  
+      <div class="Login" id ="login-segment">
+        <div class="main-login">
+
+          <div class="cancel"><button id="cancel-login">&times</button></div>
     
           <h1 class="text"> Log In Here <br>
-    
+          <h3 class="login-response" id="login-response"></h3>
+          
           <form class="details" id="signin">
-              <input type="email" placeholder="Enter email " id="signin-" required>
-              <input type="password" placeholder="Enter password " id="signin-password" required>
-    
-              <button class="button" id="form1" type="submit">login</button>
-              <a class="forget" id="forget password">Forget password</a>
-              
-    
-    
+            <input type="email" placeholder="Enter email " id="signin-email" required>
+            <input type="password" placeholder="Enter password " id="signin-password" required>
+  
+            <button class="button" id="form1" type="submit">Login</button>
+
+            <a class="forget" id="forget password">forget password</a>
+            
           </form>
+        </div>
       </div>
     
     </div>
