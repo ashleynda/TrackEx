@@ -1,6 +1,6 @@
 // write your code here
 let form = document.getElementById("signup");
-form.addEventListener('click', () => {
+form.addEventListener('submit', () => {
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
 
@@ -31,7 +31,7 @@ form.addEventListener('click', () => {
 
 
 let form1 = document.getElementById("signin");
-form1.addEventListener('click', () => {
+form1.addEventListener('submit', () => {
     let signinEmail = document.querySelector("#signin-email");
     let signinPassword = document.querySelector("#signin-password");
 
