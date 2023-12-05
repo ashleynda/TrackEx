@@ -1,25 +1,8 @@
-const express = require('express');
-const cors = require('cors');
-
-const app = express();
-
-app.use(cors());
-
-const port = process.env.PORT || 3000;
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
-});
-
-const corsOptions = {
-    origin: 'https://track-ex-ashleys-projects-4496655a.vercel.app',
-};
-  
-app.use(cors(corsOptions));
 
 
 //my code
 
-let link = 'https://bc3a-62-173-45-70.ngrok-free.app';
+let link = 'https://905f-62-173-45-70.ngrok-free.app';
 
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
@@ -44,7 +27,7 @@ form.addEventListener('submit', () => {
         method: 'POST',
         body: JSON.stringify(signupRequest),
         headers: {
-            'Content-Type': 'application/json',
+            'Content-Type': 'application/json; charset:UTF-8',
         },
     })
     .then(response => response.json()) 
@@ -97,7 +80,7 @@ form1.addEventListener('submit', () => {
         method: 'PATCH',
         body: JSON.stringify(signinRequest),
         headers: {
-            'Content-Type': 'application/json'
+            'Content-Type': 'application/json; charset:UTF-8'
         },
     })
     .then(response => response.json())
