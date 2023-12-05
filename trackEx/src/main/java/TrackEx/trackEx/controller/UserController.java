@@ -74,7 +74,7 @@ public class UserController {
     }
 
     @PatchMapping("/updateIncome")
-    public ApiResponse<Object> checkBalance(@RequestBody UpdateUserIncomeRequest request){
+    public ApiResponse<Object> updateIncome(@RequestBody UpdateUserIncomeRequest request){
         try{
             return new ApiResponse<>(userService.updateIncome(request));
         }catch (Exception e){
