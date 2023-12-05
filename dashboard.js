@@ -1,3 +1,5 @@
+let currentExpense = "";
+
 let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
     category = document.getElementById("category").value;
@@ -32,31 +34,31 @@ addExpense.addEventListener('click', () => {
 });
 
 
-let checkExpense = document.querySelector('#check-expenses-button');
-checkExpense.addEventListener('click', () => {
-    userId = localStorage.getItem('loggedinUser');    
+// let checkExpense = document.querySelector('#check-expenses-button');
+// checkExpense.addEventListener('click', () => {
+//     userId = localStorage.getItem('loggedinUser');    
 
-    let checkExpenseRequest = {
-        accountOwner: userId,
-    };
-    console.log(checkExpenseRequest);
-    const checkExpenseUrl = 'http://localhost:8080/TrackEx/check-expenses';
+//     let checkExpenseRequest = {
+//         accountOwner: userId,
+//     };
+//     console.log(checkExpenseRequest);
+//     const checkExpenseUrl = 'http://localhost:8080/TrackEx/check-expenses';
 
-    fetch(checkExpenseUrl, {
-        method: 'GET',
-        body: JSON.stringify(checkExpenseRequest),
-        headers: {
-            'Content-Type': 'application/json, charset=UTF-8'
-        },
-    })
-    .then(response => response.text())
-    .then(responseText => {
-        document.getElementById(checkExpense-response).innerText = responseText;
-    })
-    .catch(error => {
-        console.error('Error:', error)
-    })
-});
+//     fetch(checkExpenseUrl, {
+//         method: 'GET',
+//         body: JSON.stringify(checkExpenseRequest),
+//         headers: {
+//             'Content-Type': 'application/json, charset=UTF-8'
+//         },
+//     })
+//     .then(response => response.text())
+//     .then(responseText => {
+//         document.getElementById(checkExpense-response).innerText = responseText;
+//     })
+//     .catch(error => {
+//         console.error('Error:', error)
+//     })
+// });
 
 let addIncome = document.querySelector('#add-income-button-new');
 addIncome.addEventListener('click', () => {
@@ -196,29 +198,82 @@ addExpenseForm.addEventListener('click', () => {
     document.getElementById('addExpenses').style.display='flex';
 })
 
-// let checkExpenseForm = document.querySelector('#check-expenses-button');
-// checkExpenseForm.addEventListener('click', () => {
-//     clearPane();
-//     document.getElementById('box2').style.display='flex';
-// })
+
+let checkExpenseForm = document.querySelector('#check-expenses-button');
+checkExpenseForm.addEventListener('click', () => {
+    clearPane();
+    document.getElementById('check-expenses').style.display='flex';
+    userId = localStorage.getItem("loggedinUser");
+    console.log(userId)
+
+    fetch(`http://localhost:8080/TrackEx/check-expenses/${userId}`, {
+        method: 'GET',
+        headers: {
+            'Content-Type': 'application/json; charset=UTF-8'
+        },
+    })
+    .then(response => response.json())
+    .then(responseObject => {
+        if(typeof responseObject.data !== 'string'){
+        let allExpenses =  responseObject.data;
+
+        waitForNextButton(allExpenses);
+
+        } else{
+            let response = document.getElementById("expense-description");
+            response.innerHTML = responseObject.data;
+            response.style.color = 'red';
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error)
+    })  
+})
+
+let count = 0;
+function waitForNextButton(allExpenses){
+
+    currentExpense = allExpenses;
+    console.log(currentExpense)
+    console.log(allExpenses)
+    display(currentExpense[count]);
+
+}
+
+function display(expenses){
+    console.log(expenses)
+    let {category ,description, amount, dateCreated} = expenses;
+    document.getElementById("expense-category").innerText = category;
+    document.getElementById("expense-description").innerHTML = description;
+    document.getElementById("expense-price").innerText = amount;
+    document.getElementById("date-created").innerText = dateCreated;
+}
+
+
+let nextButton = document.getElementById("next-button");
+nextButton.addEventListener("click", () => {
+    count++;
+    display(currentExpense[count]);
+});
+
 
 let addIncomeForm = document.querySelector('#add-income-button');
 addIncomeForm.addEventListener('click', () => {
     clearPane();
     document.getElementById('add-income').style.display='flex';
-})
+});
 
 let updateIncomeForm = document.querySelector('#update-income-button');
 updateIncomeForm.addEventListener('click', () => {
     clearPane();
     document.getElementById('update-income-part').style.display='flex';
-})
+});
 
 let savingGoalForm = document.querySelector('#saving-goal-button');
 savingGoalForm.addEventListener('click', () => {
     clearPane();
     document.getElementById('saving').style.display='flex';
-})
+});
 
 // let checkBalanceForm = document.querySelector('#check-balance-button');
 // checkBalanceForm.addEventListener('click', () => {
