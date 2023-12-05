@@ -83,7 +83,7 @@ form1.addEventListener('submit', () => {
 
         if(typeof responseObject.data !== 'string'){
             document.getElementById("login-response").innerHTML = "Sign in Successful";
-            localStorage.setItem('loggedinUser', signinEmail.value);
+            localStorage.setItem('loggedinUser', responseObject.data.id);
             window.location = './dashboard.html';
         } else{
             let response = document.getElementById("login-response");
