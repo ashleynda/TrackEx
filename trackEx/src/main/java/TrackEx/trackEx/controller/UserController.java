@@ -37,11 +37,11 @@ public class UserController {
     }
 
     @GetMapping("/check-balance/{id}")
-    public Object checkBalance(@PathVariable String id){
+    public ApiResponse<Object> checkBalance(@PathVariable String id){
         try{
-            return userService.getBalance(id);
+            return new ApiResponse<>(userService.getBalance(id));
         }catch (Exception e){
-            return e.getMessage();
+            return new ApiResponse<>(e.getMessage());
         }
     }
 
