@@ -1,5 +1,5 @@
 let currentExpense = "";
-let link = 'https://f8ca-62-173-45-70.ngrok-free.app';
+let link = 'https://4fd8-62-173-45-70.ngrok-free.app';
 
 let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
