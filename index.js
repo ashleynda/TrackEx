@@ -1,4 +1,4 @@
-let link = 'https://4ab4-62-173-45-70.ngrok-free.app';
+let link = 'https://e718-62-173-45-70.ngrok-free.app';
 
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
