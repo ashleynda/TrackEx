@@ -22,7 +22,7 @@ addExpense.addEventListener('click', () => {
         method: 'POST',
         body: JSON.stringify(addExpenseRequest),
         headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-Type': 'application/json'
         },
     })
     .then(response => response.json())
@@ -53,7 +53,7 @@ addIncome.addEventListener('click', () => {
         method: 'POST',
         body: JSON.stringify(addIncomeRequest),
         headers: {
-            'Content-Type': 'application/json; charset=UTF-8'
+            'Content-Type': 'application/json'
         },
     })
     .then(response => response.json())
