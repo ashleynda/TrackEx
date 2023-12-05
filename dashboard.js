@@ -174,25 +174,32 @@ savingGoal.addEventListener('click', () => {
 
 let checkBalance = document.querySelector('#check-balance-button');
 checkBalance.addEventListener('click', () => {
-    userId = localStorage.getItem('loggedinUser');
+    clearPane();
+    let userId = localStorage.getItem('loggedinUser');
+    document.getElementById('check-balance').style.display='flex';
 
-    let checkBalanceRequest = {
-        accountOwner: userId
-    };
-
-    console.log(checkBalanceRequest);
-    const checkBalanceUrl = 'http://localhost:8080:TrackEx/check-balance';
+    // console.log(checkBalanceRequest);
+    const checkBalanceUrl = `http://localhost:8080/TrackEx/check-balance/${userId}`;
 
     fetch(checkBalanceUrl, {
         method: 'GET',
-        body: JSON.stringify(checkBalanceRequest),
         headers: {
-            'Content-Type': 'application/json, charset=UTF-8'
+            'Content-Type': 'application/json; charset=UTF-8'
         },
     })
     .then(response => response.text())
-    .then(responseText => {
-        document.getElementById("checkBalance-response").innerText = responseText;
+    .then(responseObject => {
+        // document.getElementById("check-balance-text").innerText = responseObject.data;
+        // if(typeof responseObject.data !== 'string'){
+        //     document.getElementById("check-balance-text").innerText = responseObject.data.balance;
+            
+        // } else{
+        //     let response = document.getElementById("check-balance-text");
+        //     response.innerHTML = responseObject.data;
+        //     response.style.color = 'red';
+        // }
+
+        
     })
     .catch(error => {
         console.error('Error:', error)
@@ -286,7 +293,7 @@ savingGoalForm.addEventListener('click', () => {
 // let checkBalanceForm = document.querySelector('#check-balance-button');
 // checkBalanceForm.addEventListener('click', () => {
 //     clearPane();
-//     document.getElementById('box6').style.display='flex';
+//     document.getElementById('check-balance').style.display='flex';
 // })
 
 
