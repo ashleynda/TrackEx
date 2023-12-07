@@ -1,5 +1,13 @@
+let screenSize = window.screen.width;
+document.querySelector("body").style.maxWidth = screenSize+"px";
+console.log(screenSize+"px");
+
+
+let displayName = localStorage.getItem("user-user-name");
+document.getElementById("user-user-username").innerHTML = displayName;
+
 let currentExpense = "";
-let link = 'https://905f-62-173-45-70.ngrok-free.app';
+let link = 'https://815d-62-173-45-70.ngrok-free.app';
 
 let addExpense = document.querySelector('#add-expenses-button-new');
 addExpense.addEventListener('click', () => {
@@ -27,7 +35,11 @@ addExpense.addEventListener('click', () => {
     })
     .then(response => response.json())
     .then(responseObject => {
+        console.log(responseObject)
         document.getElementById("add-expense-text").innerText = responseObject.data.message;
+        let balance = document.getElementById("add-expense-balance");
+        balance.innerText = "Balance: " + responseObject.data.balance;
+        balance.style.color = "green";
     })
     .catch(error => {
         console.error('Error:', error)
@@ -99,7 +111,11 @@ updateIncome.addEventListener('click', () => {
     .then(responseObject => {
 
         if(typeof responseObject.data !== 'string'){
+            console.log(responseObject.data);
             document.getElementById("update-income-text").innerHTML = responseObject.data.message;
+            let newIncome = document.getElementById("update-income-balance");
+            newIncome.innerHTML = "Balance: " + responseObject.data.newIncome;
+            newIncome.style.color = 'green';
             
         } else{
             let response = document.getElementById("update-income-text");
@@ -135,7 +151,9 @@ savingGoal.addEventListener('click', () => {
     .then(response => response.json())
     .then(responseObject => {
         if(typeof responseObject.data !== 'string'){
-        document.getElementById("saving-goal-text").innerText = responseObject.data.message;
+            let response = document.getElementById("saving-goal-text");
+            response.innerHTML = responseObject.data.message;
+            response.style.color = 'green';
 
         } else{
             let response = document.getElementById("saving-goal-text");
@@ -154,17 +172,32 @@ checkBalance.addEventListener('click', () => {
     document.getElementById('check-balance').style.display='flex';
     let userId = localStorage.getItem('loggedinUser');
     
-    const checkBalanceUrl = `${link}/TrackEx/check-balance/${userId}`;
+    // const checkBalanceUrl = `${link}/TrackEx/check-balance/${userId}/balance`;
+    let tempBalanceRequest = {
+        accountOwnerId: userId,
+        amount: 0
+    };
 
-    fetch(checkBalanceUrl, {
-        method: 'GET',
+    const tempBalanceURl = `${link}/TrackEx/updateIncome`;
+
+    fetch(tempBalanceURl, {
+        method: 'PATCH',
+        body: JSON.stringify(tempBalanceRequest),
         headers: {
             'Content-Type': 'application/json; charset=UTF-8'
         },
     })
-    .then(response => response.json())
+    .then(response => {
+        console.log(response);
+        return response.json();
+    })
     .then(responseObject => {
-        document.getElementById("check-balance-text").innerText = responseObject.data;          
+        if(typeof responseObject.data !== 'string'){
+            document.getElementById("check-balance-text").innerText = responseObject.data.newIncome; 
+        } else{
+            console.log("An error occurred");
+        }
+         
     })
     .catch(error => {
         console.error('Error:', error)
@@ -195,11 +228,11 @@ checkExpenseForm.addEventListener('click', () => {
     .then(response => response.json())
     .then(responseObject => {
         if(typeof responseObject.data !== 'string'){
-        let allExpenses =  responseObject.data;
-        console.log(responseObject.data);
-        console.log(allExpenses);
+            let allExpenses =  responseObject.data;
+            console.log(responseObject.data);
+            console.log(allExpenses);
 
-        waitForNextButton(allExpenses);
+            waitForNextButton(allExpenses);
 
         } else{
             let response = document.getElementById("expense-description");
@@ -269,7 +302,10 @@ function clearPane() {
     document.getElementById('addExpenses').style.display='none';
     document.getElementById('add-income').style.display='none';
     document.getElementById('saving').style.display='none';
-       
+    document.getElementById("add-expense-text").innerHTML = "";
+    document.getElementById("add-expense-balance").innerHTML = "";
+    document.getElementById("update-income-text").innerHTML = "";
+    document.getElementById("update-income-balance").innerHTML = "";
 }
 
 

@@ -1,8 +1,9 @@
-
-
+let screenSize = window.screen.width;
+document.querySelector("body").style.maxWidth = screenSize+"px";
+console.log(screenSize+"px")
 //my code
 
-let link = 'https://905f-62-173-45-70.ngrok-free.app';
+let link = 'https://815d-62-173-45-70.ngrok-free.app';
 
 let form = document.getElementById("signup");
 form.addEventListener('submit', () => {
@@ -10,9 +11,6 @@ form.addEventListener('submit', () => {
 
     let email = document.querySelector("#email");
     let password = document.querySelector("#password");
-    let username = document.getElementById("user-username");
-
-    localStorage.setItem("currentUser", username.value);
 
     let signupRequest = {
         email: email.value,
@@ -67,12 +65,14 @@ form1.addEventListener('submit', () => {
     event.preventDefault();
     let signinEmail = document.querySelector("#signin-email");
     let signinPassword = document.querySelector("#signin-password");
+    let displayName = document.querySelector("#user-username");
 
     let signinRequest = {
         email: signinEmail.value,
         password: signinPassword.value
     };
 
+    localStorage.setItem("user-user-name", displayName.value);
     console.log(signinRequest);
     const loginUrl = `${link}/TrackEx/login`;
 

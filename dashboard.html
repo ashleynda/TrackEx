@@ -4,25 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <link rel="stylesheet" href="dashboard.css">
-  <title>Document</title>
+  <title>TrackEx</title>
 </head>
 <body class="alldiv">
 
   <header class="header">
     <h1 class="text">Track<span>Ex</span></h1>
 
+    <div class="username-space">
+      <h2>Welcome <span id="user-user-username">User</span></h2>
+    </div>
 
     <div class="header-button">
       <button class="log-out" id="logout">
-        <img src="/assest/icons8-power-button-48.png" alt="">
-        Log-Out </button>
+        <img src="/assest/logout.jpeg" alt="" class="log-out-buttonimage">
+        Log Out </button>
     </div>
   </header>
 
   <div class="workspace">
     <div class="dashboard">
       <div class="user-services">
-          <button id="add-income-button">Add Income</button>
+          <button id="add-income-button">Income</button>
           <button id="check-balance-button" > Check Balance </button>
           <button id="update-income-button">Update Income</button>
           <button id="add-expenses-button">Add Expenses</button>
@@ -33,9 +36,8 @@
     </div>
 
     <div class="update-income" id="check-balance">
-      <h1 id="balance"></h1>
       <img class="correct" src="/assest/icons8-check-48.png" alt="">
-      <h2>Your balance is <br> <span class="balance-amount" style='font-size:100px;'>&#8358;
+      <h2>Your balance is <br> <span class="balance-amount" >&#8358;
         <span id="check-balance-text"></span>
       </span></h2>
       
@@ -56,24 +58,30 @@
     <div class="update-income" id="add-income">
       <h1>Add Income</h1>
       <div id="add-income-text"></div>
-      <input class="input" type="number" id="addIncomeAmount" placeholder="Enter Amount" required>
-      <button class="add-expenses-button" id="add-income-button-new">Add Income</button>
+      <input class="input" type="number" id="addIncomeAmount" placeholder="Enter your income for the month" required>
+      <button class="add-expenses-button" id="add-income-button-new">Confirm Income</button>
     
     </div>
   
     <div class="update-income" id="update-income-part">
       <h1>Update Income</h1>
-      <div id="update-income-text"></div>
-      <input class="input" type="number" id="updateIncomeAmount" placeholder="Enter Amount">
+      <div >
+        <h3 id="update-income-text"></h3>
+        <h4 id="update-income-balance"></h4>
+      </div>
+      <input class="input" type="number" id="updateIncomeAmount" placeholder="Enter Amount you want to add to your income">
       <button class="update-income-button" id="update-income-button-new" >Update Income</button>
       
     </div>
   
     <div class="add-expenses" id="addExpenses">
       <h1>Add Expenses</h1>
-      <div id="add-expense-text"></div>
+      <div>
+        <h5 id="add-expense-text"></h5>
+        <h4 id="add-expense-balance"></h4>
+      </div>
       <select id="category" class="input">
-        <option selected>Select a Category</option>
+        <option selected>Select Expenses Category</option>
         <option>Home & Utilities</option>
         <option>Insurance & Financial Section</option>
         <option>Obligations</option>
@@ -82,10 +90,11 @@
         <option>Entertainment & Dine Out</option>
         <option>Transportation Fares</option>
         <option>Child Care</option>
+        <option>Miscellenous/Other</option>
       </select>
   
       <div id="description">
-        <textarea name="description"class id="description-text" cols="40" rows="5" placeholder="Enter a description"></textarea >
+        <textarea name="description"class id="description-text" cols="40" rows="5" placeholder="Enter Expenses description"></textarea >
       </div>
       <input type="number" placeholder="Enter Amount" class="input" id="amount">
       <button class="add-expenses-button" id="add-expenses-button-new">Add Expenses</button>
@@ -93,9 +102,9 @@
   
     <div class="saving" id="saving">
       <h1>Saving Goal</h1>
-      <div id="saving-goal-text"></div>
-      <input class="input" type="number" id="setSavingGoal" placeholder="Enter Amount">
-      <button type="text" class="add-expenses-button" id="saving-goal">Add Savings</button>
+      <h3 id="saving-goal-text"></h3>
+      <input class="input" type="number" id="setSavingGoal" placeholder="Enter Amount you want to save for the month">
+      <button type="text" class="add-expenses-button" id="saving-goal">Save</button>
     </div>
   
   </div>
