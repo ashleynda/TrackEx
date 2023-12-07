@@ -1,9 +1,15 @@
 body{
-  background-color: rgb(255, 255, 255);
+  display: flex;
+  background-color: rgb(253, 252, 252);
+  margin: 0px;
+  background-image: url("./assest/kindpng_580815.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  justify-content: center;
+  
 }
 
 .header{
-  background-color: rgb(255, 255, 255);
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -17,7 +23,7 @@ body{
 }
 
 .text{
-  font-size: 70px;
+  font-size: 90px;
   text-align: left;
   gap: 90px;
   
@@ -27,18 +33,28 @@ body{
   color: rgb(0, 119, 255);
 }
 
+.username-space > h2 {
+  font-size: 39px;
+}
+.username-space > h2 > span {
+  color: rgb(0, 119, 255);
+}
+
 .log-out{
   text-align: left;
   position: relative;
   font-size: 13px;
   display: flex;
   flex-direction: column;
-  padding: -80px;
   cursor: pointer;
   border: none;
   background-color: rgb(255, 255, 255);
   margin-right: 20px;
-  
+  align-items: center;
+}
+
+.log-out-buttonimage{
+  width: 50px;
 }
 
 .user-services {
@@ -66,7 +82,7 @@ body{
   height: 45px;
   width: 180px;
   border: none;
-  background-color: rgb(184, 182, 182);
+  background-color: rgb(238, 243, 248);
   color: rgb(19, 18, 18);
   cursor: pointer;
   border-radius: 8px;
@@ -75,7 +91,7 @@ body{
 }
 
 .user-services > button:hover{
-  background-color: rgb(49, 48, 48);
+  background-color: rgb(233, 233, 233);
 }
 
 .balance{
@@ -172,4 +188,89 @@ input::-webkit-outer-spin-button{
 .balance-amount{
   color: green;
 }
+h5, h4, h3, h2{
+  margin: 0px;
+}
 
+.correct{
+  width: 90px;
+}
+
+.balance-amount{
+  font-size:90px;
+}
+
+@media screen and (max-width: 728px){
+  
+  .alldiv{
+    gap: 20px;
+    padding: 10px 10px;
+    align-items: center;
+  }
+
+  .header{
+    justify-content: space-between;
+    width: 100%;
+  }
+
+  .text{
+    font-size: 40px;    
+  }
+
+  .username-space>h2{
+    font-size: 15px;
+  }
+
+  .log-out{
+    width: 45px;
+    margin-right: 0px;
+    font-size: 8px;
+  }
+
+  .log-out > img{
+    width: 15px;
+  }
+
+  .workspace{
+    width: 100%;
+    flex-direction: column;
+    gap: 100px;
+    padding: 10px 10px;
+    align-items: center;
+  }
+
+  .dashboard{
+    margin: 0px;
+    flex-direction: column;
+    padding: 10px 0px;
+    
+  }
+
+  .user-services{
+    width: 95%;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 8px;
+    margin-left: 0px;
+    padding: 10px 0px;
+
+  }
+
+  .user-services > button{
+    font-size: 13px;
+    margin: 0px;
+    height: 25px;
+    width: 110px;
+    background-color: rgb(189, 207, 226);
+    
+  }
+
+  .update-income, .saving, .add-expenses{
+    margin-bottom: 30px;
+    align-content: center;
+    width: 100%;
+    gap: 10px;
+  }
+  
+
+}

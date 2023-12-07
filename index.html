@@ -8,17 +8,19 @@
 </head>
 <body>
     <div class="page">
-      <div class="exception"></div>
+      <div>
+        <h1 class="track">Track<span>Ex</span></h1>
+      </div>
+
       <div class="main" id="signup-segment">
   
-        <h1 class="text"> Welcome to your favorite Expense Tracker <br>
+        <h1 class="text"> Welcome to your Expense Tracker <br><br>Sign Up</h1>
         <h3 id="signup-response"></h3>
         <form class="details" id="signup" method="post">
-            <input type="text" placeholder="Enter FirstName and LastName" id="firstname" required>
-            <input type="text" placeholder="Enter Username" id="user-username" required>
+            <input type="text" placeholder="Enter your name" id="firstname" required>
             <input type="email" placeholder="Enter your preferred email " id="email" required>
             <input type="password" placeholder="Enter your password " id="password" required>
-            <input type="number" placeholder="Enter your phone-number" id="phone-number">
+            <input type="number" placeholder="Enter your phone number" id="phone-number">
   
             <button class="button" id="form" type="submit">Sign-Up</button>
             
@@ -36,16 +38,17 @@
 
           <div class="cancel"><button id="cancel-login">&times</button></div>
     
-          <h1 class="text"> Log In Here <br>
+          <h1 class="text"> Log In</h1>
           <h3 class="login-response" id="login-response"></h3>
           
           <form class="details" id="signin">
+            <input type="text" placeholder="Enter Username/Display name" id="user-username" required>
             <input type="email" placeholder="Enter email " id="signin-email" required>
             <input type="password" placeholder="Enter password " id="signin-password" required>
   
             <button class="button" id="form1" type="submit">Login</button>
 
-            <a class="forget" id="forget password">forget password</a>
+            <a class="forget" id="forget password">Forgot password? click here</a>
             
           </form>
         </div>
